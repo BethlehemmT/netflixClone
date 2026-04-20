@@ -1,2 +1,6 @@
 @import "tailwindcss";
 @custom-variant hover (&:hover);
+
+body{
+    background-color: #181818;
+}

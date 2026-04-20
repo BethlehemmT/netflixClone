@@ -1,13 +1,17 @@
 import React from 'react'
 import Hero from '../components/Hero'
 import CardList from '../components/CardList'
-
+import Footer from '../components/Footer'
 
 const homepage = () => {
   return (
     <div className='p-5'>
       <Hero />
       <CardList />
+      <CardList />
+      <CardList />
+      <CardList />
+      <Footer />
     </div>
   )
 }

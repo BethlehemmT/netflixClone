@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect } from "react";
-import { useParams} from "react-router";
+import { Link, useParams} from "react-router";
 import { useState } from 'react';
 import { Play } from 'lucide-react'
 
@@ -50,6 +50,7 @@ fetch(
 
   return (
     <div className = "min-h-screen bg-[#181818] text-white">
+
       <div className = "relative h-[60vh] flex item-end" style={
         {
         backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`,
@@ -131,9 +132,41 @@ fetch(
 
       </div>
 
+      {recommendations.length > 0 && (
+   <div className="p-8">
+        <h2 className="text-2xl font-semibold mb-4">You might also like...</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
+              {recommendations.slice(0,10).map((rec) => (
+                <div key={rec.id} className="bg-[#232323] rounded-lg overflow-hidden hover:scale-105 transition">
+                  <Link to={'/movie/${rec.id}'}>
+                  <img
+                    src={`https://image.tmdb.org/t/p/w500${rec.poster_path}`}
+                    //className = "w-full h-48 object-cover"*/]
+                   />
+                   <div>
+                      <h3>{rec.title}</h3>
+                        <span>
+                          {rec.release_date?.slice(0,4)}
+                        </span>
+                   </div>
+                  
+                
+                  </Link>
+                </div>
+              ))}
+              </div>
+        </div>
+      )}
+
+
+      
+        
 
     </div>
+    
   )
 }
+
 
 export default MoviePage
